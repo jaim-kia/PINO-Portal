@@ -1,6 +1,7 @@
 <style>
   .navbar {
     width: 350px;
+    float: left;
     background-color: #005EB8;
     box-shadow: -4px 0px 20px -5px rgba(26, 26, 26, 0.25) inset;
     padding: 40px 8px;
@@ -20,7 +21,7 @@
   .nav_header_profile {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
   }
   .nav_header_actions {
     margin-left: auto;
@@ -36,11 +37,16 @@
   }
   .profile_details {
     font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
   }
   .edit_details {
     font-size: 12px;
     text-decoration-line: underline;
     opacity: 0.5;
+    font-style: normal;
+    font-weight: 400;
   }
   .nav_view {
     padding: 0px 8px;
@@ -57,8 +63,10 @@
     align-items: center;
     gap: 10px;
     align-self: stretch;
+    color: white;
+    text-decoration: none;
   }
-  .nav_view_tab:hover {
+  .nav_view_tab:hover{
     border-radius: var(--Radius-radius-s, 8px);
     background: var(--Tab-Background-tab-hover, rgba(255, 255, 255, 0.20));
     background-blend-mode: overlay;
@@ -86,68 +94,76 @@
   }
 </style>
 
-<main class="main">
-  <div class="navbar">
-    <div class="nav_header">
-      <div class="nav_header_profile">
-        <div class="profile_display">
+
+<div class="navbar" [class.collapsed]="isCollapsed">
+  <div class="nav_header"  *ngIf="!isCollapsed; else nav_header_collapsed">
+    <div class="nav_header_profile">
+      <div class="profile_display" *ngIf="!isCollapsed">
           <!-- insert image remove bg -->
-        </div>
-        <div class="profile_details">
-          <div>Hi, User</div>
-          <div class="edit_details"><a>Edit Profile</a></div>
-        </div>
       </div>
-      <div class="nav_header_actions">
-        <div class="nav_notif">
-          <app-icons svgType="icon-notif"></app-icons>
-        </div>
-        <div class="nav_close">
-          <app-icons svgType="icon-close"></app-icons>
-        </div>
+      <div class="profile_details">
+        <div>Hi, User</div>
+        <div class="edit_details"><a>Edit Profile</a></div>
       </div>
     </div>
-    <div class="nav_general">
-      <p class="nav_view">GENERAL</p>
-      <div class="nav_view_tab">
-        <app-icons svgType="icon-home"></app-icons>
-        Home
+    <div class="nav_header_actions" *ngIf="!isCollapsed">
+      <div class="nav_notif">
+        <app-icons svgType="icon-notif"></app-icons>
       </div>
-      <div class="nav_view_tab">
-        <app-icons svgType="icon-inbox"></app-icons>
-        Inbox
-      </div>
-      <div class="nav_view_tab">
-        <app-icons svgType="icon-calendar"></app-icons>
-        Calendar
-      </div>
-      <div class="nav_view_tab">
-        <app-icons svgType="icon-directory"></app-icons>
-        Directory
-      </div>
-      <div class="nav_view_tab">
-        <app-icons svgType="icon-forms"></app-icons>
-        Forms
+      <div class="nav_close" (click)="toggleSidebar()">
+        <app-icons svgType="icon-close"></app-icons>
       </div>
     </div>
-    <div class="nav_workspace">
-      <p class="nav_view">WORKSPACE</p>
-      <div class="nav_view_tab">
-        <app-icons svgType="icon-todo"></app-icons>
-        To-do List
+  </div>
+  <ng-template #nav_header_collapsed>
+      <div class="nav_close" style="height: 104px;" (click)="toggleSidebar()">
+        <app-icons svgType="icon-menu"></app-icons>
       </div>
-      <div class="nav_view_tab">
-        <app-icons svgType="icon-notes"></app-icons>
-        Personal Notes
-      </div>
-      <div class="nav_view_tab">
-        <app-icons svgType="icon-links"></app-icons>
-        Client Links
-      </div>
-    </div>
+  </ng-template>
+
+  <div class="nav_general">
+    <p class="nav_view">GENERAL</p>
+    <a class="nav_view_tab" routerLink="/home">
+      <app-icons svgType="icon-home"></app-icons>
+      Home
+    </a>
+    <a class="nav_view_tab" routerLink="/inbox">
+      <app-icons svgType="icon-inbox"></app-icons>
+      Inbox
+    </a>
+    <a class="nav_view_tab" routerLink="/calendar">
+      <app-icons svgType="icon-calendar"></app-icons>
+      Calendar
+    </a>
+    <a class="nav_view_tab" routerLink="/directory">
+      <app-icons svgType="icon-directory"></app-icons>
+      Directory
+    </a>
+    <a class="nav_view_tab" routerLink="/forms">
+      <app-icons svgType="icon-forms"></app-icons>
+      Forms
+    </a>
+  </div>
+
+  <div class="nav_workspace">
+    <p class="nav_view">WORKSPACE</p>
+    <a class="nav_view_tab" routerLink="/todo">
+      <app-icons svgType="icon-todo"></app-icons>
+      To-do List
+    </a>
+    <a class="nav_view_tab" routerLink="/notes">
+      <app-icons svgType="icon-notes"></app-icons>
+      Personal Notes
+    </a>
+    <a class="nav_view_tab" routerLink="/links">
+      <app-icons svgType="icon-links"></app-icons>
+      Client Links
+    </a>
+  </div>
+
   <div class="nav_help">
     Having trouble with the website?<br>
     <a class="link">Contact the team here.</a>
   </div>
-  </div>
-</main>
+</div>
+
