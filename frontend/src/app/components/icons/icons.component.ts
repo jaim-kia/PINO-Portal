@@ -7,12 +7,12 @@ import { IconsService } from '../../icons.service';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <span 
+    <div 
       [innerHTML]="svgContent" 
       class="icon" 
       [class.active]="isActive"
       [class]="baseIconType"
-    ></span>
+    ></div>
   `,
   styleUrl: './icons.component.css'
 })

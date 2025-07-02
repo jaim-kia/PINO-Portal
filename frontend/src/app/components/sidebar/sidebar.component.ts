@@ -16,10 +16,10 @@ export class SidebarComponent {
   isCollapsed = false;
   isEnabled: boolean = false;
 
-  toggleIcon() {
-    this.isEnabled = !this.isEnabled;
-    this.currentIcon = this.isEnabled ? 'icon-home-enabled' : 'icon-home';
-  }
+  // toggleIcon() {
+  //   this.isEnabled = !this.isEnabled;
+  //   this.currentIcon = this.isEnabled ? 'icon-home-enabled' : 'icon-home';
+  // }
 
   toggleSidebar() {
     this.isCollapsed = !this.isCollapsed;
