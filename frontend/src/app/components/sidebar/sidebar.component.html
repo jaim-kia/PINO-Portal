@@ -1,6 +1,5 @@
 <style>
   .navbar {
-    width: 350px;
     float: left;
     background-color: #005EB8;
     box-shadow: -4px 0px 20px -5px rgba(26, 26, 26, 0.25) inset;
@@ -12,7 +11,15 @@
     color: white;
     font-family: 'Satoshi-Regular';
     box-sizing: border-box;
+    transition: all 0.5s ease;
   }
+  .navbar.collapsed {
+    width: 64px;
+  }
+  .navbar:not(.collapsed) {
+    width: 350px;
+  }
+
   .nav_header {
     padding: 0px 8px;
     display: flex;
@@ -67,6 +74,8 @@
     color: white;
     text-decoration: none;
     cursor: pointer;
+    max-height: 40px;
+    overflow: hidden;
 
   }
   .nav_view_tab.hover-enabled:hover{
@@ -118,10 +127,7 @@
     align-items: center;
     justify-content: center;
   }
-  .collapsed {
-    transition-duration: 0.5s;
-    width: 64px;
-  }
+
   .nav_header_collapsed {
     margin: 0px auto;
     display: flex;
@@ -140,6 +146,7 @@
   @keyframes dissapear {
     0%   {
       opacity: 100%;
+      display: flex;
     }
     100% {
       opacity: 0%;
@@ -148,19 +155,15 @@
   }
 
   .fade {
-    /* transition-duration: 0.5s; */
-    display: block;
-    position: absolute;
-    animation-name: dissapear;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
+    animation: dissapear 0.5s forwards;
   }
+
 </style>
 
 
 <div class="navbar" [class.collapsed]="isCollapsed">
   <div class="nav_header"  *ngIf="!isCollapsed; else nav_header_collapsed">
-    <div class="nav_header_profile">
+    <div class="nav_header_profile" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
       <div class="profile_display" [class.fade]="isCollapsed">
           <!-- insert image remove bg -->
       </div>
@@ -207,7 +210,7 @@
           [class.hover-enabled]="!isActive(item.id)">
             <app-icons [svgType]="'icon-' + item.id" [isActive]="isActive(item.id)"></app-icons>
             <!-- <div *ngIf="!isCollapsed">{{item.title}}</div> -->
-            <div [class.fade]="isCollapsed">{{item.title}}</div>
+            <div [class.fade]="isCollapsed" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{item.title}}</div>
         </a>
       </ng-container>
     </div>
@@ -221,7 +224,7 @@
           [ngClass]="{'tab_active': isActive(item.id)}"
           [class.hover-enabled]="!isActive(item.id)">
           <app-icons [svgType]="'icon-' + item.id" [isActive]="isActive(item.id)"></app-icons>
-          <div [class.fade]="isCollapsed">{{item.title}}</div>
+          <div [class.fade]="isCollapsed" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{item.title}}</div>
         </a>
       </ng-container>
     </div>

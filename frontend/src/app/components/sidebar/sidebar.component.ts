@@ -2,13 +2,28 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconsComponent} from '../icons/icons.component';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   imports: [CommonModule, IconsComponent, RouterModule],
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrl: './sidebar.component.css',
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({
+        opacity: 1,
+        display: 'block' // or 'flex', 'inline-block', etc.
+      })),
+      state('out', style({
+        opacity: 0,
+        display: 'none'
+      })),
+      transition('in <=> out', animate('300ms ease-in-out'))
+    ])
+  ]
+  
 })
 
 export class SidebarComponent {
