@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconsComponent} from '../icons/icons.component';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',

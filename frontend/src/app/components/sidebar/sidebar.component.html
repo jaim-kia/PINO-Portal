@@ -27,7 +27,7 @@
     margin-left: auto;
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: 12px;
   }
   .profile_display {
     background-color: aliceblue;
@@ -71,13 +71,11 @@
   }
   .nav_view_tab.hover-enabled:hover{
     border-radius: var(--Radius-radius-s, 8px);
-    background: var(--Tab-Background-tab-hover, rgba(255, 255, 255, 0.20));
-    background-blend-mode: overlay;
+    background: #0171C6;
   }
   .nav_view_tab.tab_active {
     border-radius: var(--Radius-radius-s, 8px);
-    background: rgba(255, 255, 255, 0.40);
-    background-blend-mode: overlay;
+    background: #0084D4;
   }
   .nav_help {
     margin: auto 20px 0px 20px;
@@ -121,6 +119,7 @@
     justify-content: center;
   }
   .collapsed {
+    transition-duration: 0.5s;
     width: 64px;
   }
   .nav_header_collapsed {
@@ -130,7 +129,31 @@
     flex-direction: column;
   }
   .nav_close, .nav_notif {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+  }
+
+  @keyframes dissapear {
+    0%   {
+      opacity: 100%;
+    }
+    100% {
+      opacity: 0%;
+      display: none;
+    }
+  }
+
+  .fade {
+    /* transition-duration: 0.5s; */
+    display: block;
+    position: absolute;
+    animation-name: dissapear;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
   }
 </style>
 
@@ -138,7 +161,7 @@
 <div class="navbar" [class.collapsed]="isCollapsed">
   <div class="nav_header"  *ngIf="!isCollapsed; else nav_header_collapsed">
     <div class="nav_header_profile">
-      <div class="profile_display" *ngIf="!isCollapsed">
+      <div class="profile_display" [class.fade]="isCollapsed">
           <!-- insert image remove bg -->
       </div>
       <div class="profile_details">
@@ -146,7 +169,7 @@
         <div class="edit_details" style="cursor: pointer;"><a>Edit Profile</a></div>
       </div>
     </div>
-    <div class="nav_header_actions" *ngIf="!isCollapsed">
+    <div class="nav_header_actions" [class.fade]="isCollapsed">
       <div class="nav_notif">
         <app-icons svgType="icon-notif"></app-icons>
       </div>
@@ -183,7 +206,8 @@
           [ngClass]="{'tab_active': isActive(item.id)}"
           [class.hover-enabled]="!isActive(item.id)">
             <app-icons [svgType]="'icon-' + item.id" [isActive]="isActive(item.id)"></app-icons>
-            <div *ngIf="!isCollapsed">{{item.title}}</div>
+            <!-- <div *ngIf="!isCollapsed">{{item.title}}</div> -->
+            <div [class.fade]="isCollapsed">{{item.title}}</div>
         </a>
       </ng-container>
     </div>
@@ -193,9 +217,11 @@
     <p class="nav_view" *ngIf="!isCollapsed; else divider">WORKSPACE</p>
     <div *ngFor="let item of navItems">
       <ng-container *ngIf="item.category == 'workspace'">
-        <a class="nav_view_tab" (click)="toggleIcon(item.id)">
+        <a class="nav_view_tab" (click)="toggleIcon(item.id)"
+          [ngClass]="{'tab_active': isActive(item.id)}"
+          [class.hover-enabled]="!isActive(item.id)">
           <app-icons [svgType]="'icon-' + item.id" [isActive]="isActive(item.id)"></app-icons>
-          <div *ngIf="!isCollapsed">{{item.title}}</div>
+          <div [class.fade]="isCollapsed">{{item.title}}</div>
         </a>
       </ng-container>
     </div>
