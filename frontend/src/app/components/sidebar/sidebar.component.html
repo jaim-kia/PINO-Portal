@@ -58,12 +58,13 @@
   }
   .nav_view {
     padding: 0px 8px;
-    margin: 0px 0px 12px 0px;
+    /* margin: 0px 0px 12px 0px; */
     font-size: 10px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
     letter-spacing: 0.05rem;
+    position: absolute;
   }
   .nav_view_tab {
     display: flex;
@@ -96,7 +97,8 @@
   }
 
   .nav_help_collapsed {
-    margin: auto auto 0px auto;
+    /* margin-top: auto; */
+    /* position: absolute; */
     cursor: pointer;
   }
     
@@ -116,9 +118,10 @@
   .divider {
     display: flex;
     height: 12px;
+    width: 40px;
     justify-content: center;
-    padding: 0px 8px;
-    margin: 0px auto 12px auto;
+    /* padding: 0px 8px; */
+    margin: 0px auto 0 auto;
     font-size: 10px;
     font-style: normal;
     font-weight: 700;
@@ -126,20 +129,24 @@
     letter-spacing: 0.05rem;
     align-items: center;
     justify-content: center;
+    position: absolute;
   }
 
   .nav_header_collapsed {
-    margin: 0px auto;
     display: flex;
+    width: 40px;
     gap: 12px;
     flex-direction: column;
+    align-items: center;
+    position: absolute;
   }
+
   .nav_close, .nav_notif {
     width: 24px;
     height: 24px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
   }
 
@@ -158,13 +165,30 @@
     animation: dissapear 0.5s forwards;
   }
 
+  .nav_tabs {
+    margin-top: 24px;
+  }
+
+  .nav_general_collapsed {
+    animation: apply-margin 300ms forwards;
+  }
+
+  @keyframes apply-margin {
+  0%, 99.99% {
+    margin-top: 0;
+  }
+  100% {
+    margin-top: 134.4px; 
+  }
+}
+
 </style>
 
 
 <div class="navbar" [class.collapsed]="isCollapsed">
-  <div class="nav_header"  *ngIf="!isCollapsed; else nav_header_collapsed">
+  <div class="nav_header" @fadeInOut *ngIf="!isCollapsed; else nav_header_collapsed">
     <div class="nav_header_profile" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-      <div class="profile_display" [class.fade]="isCollapsed">
+      <div class="profile_display">
           <!-- insert image remove bg -->
       </div>
       <div class="profile_details">
@@ -172,7 +196,7 @@
         <div class="edit_details" style="cursor: pointer;"><a>Edit Profile</a></div>
       </div>
     </div>
-    <div class="nav_header_actions" [class.fade]="isCollapsed">
+    <div class="nav_header_actions">
       <div class="nav_notif">
         <app-icons svgType="icon-notif"></app-icons>
       </div>
@@ -182,7 +206,7 @@
     </div>
   </div>
   <ng-template #nav_header_collapsed>
-    <div class="nav_header_collapsed" style="height: 102.4px;">
+    <div class="nav_header_collapsed" @fadeInOut >
       <div style="cursor: pointer;">
         <app-icons svgType="icon-menu" (click)="toggleSidebar()"></app-icons>
       </div>
@@ -193,52 +217,72 @@
   </ng-template>
 
   <ng-template #divider>
-    <div class="divider">
+    <div class="divider" @fadeInOut>
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="2" viewBox="0 0 18 2" fill="none">
       <path d="M1 1H17" stroke="white" stroke-width="2" stroke-linecap="round"/>
       </svg>
     </div>
   </ng-template>
 
-  <div class="nav_general">
-    <p class="nav_view" *ngIf="!isCollapsed; else divider">GENERAL</p>
-    <div *ngFor="let item of navItems">
-      <ng-container *ngIf="item.category == 'general'">
-        <a class="nav_view_tab" 
-          (click)="toggleIcon(item.id)"
-          [ngClass]="{'tab_active': isActive(item.id)}"
-          [class.hover-enabled]="!isActive(item.id)">
-            <app-icons [svgType]="'icon-' + item.id" [isActive]="isActive(item.id)"></app-icons>
-            <!-- <div *ngIf="!isCollapsed">{{item.title}}</div> -->
-            <div [class.fade]="isCollapsed" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{item.title}}</div>
-        </a>
-      </ng-container>
+  <div class="nav_general" [class.nav_general_collapsed]="isCollapsed">
+    <p class="nav_view" @fadeInOut *ngIf="!isCollapsed; else divider">GENERAL</p>
+    <div class="nav_tabs">
+      <div *ngFor="let item of navItems">
+        <ng-container *ngIf="item.category == 'general'">
+          <a class="nav_view_tab" 
+            (click)="toggleIcon(item.id)"
+            [ngClass]="{'tab_active': isActive(item.id)}"
+            [class.hover-enabled]="!isActive(item.id)">
+              <app-icons [svgType]="'icon-' + item.id" [isActive]="isActive(item.id)"></app-icons>
+              <!-- <div *ngIf="!isCollapsed">{{item.title}}</div> -->
+              <div [class.fade]="isCollapsed" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{item.title}}</div>
+          </a>
+        </ng-container>
+      </div>
     </div>
   </div>
 
   <div class="nav_workspace">
-    <p class="nav_view" *ngIf="!isCollapsed; else divider">WORKSPACE</p>
-    <div *ngFor="let item of navItems">
-      <ng-container *ngIf="item.category == 'workspace'">
-        <a class="nav_view_tab" (click)="toggleIcon(item.id)"
-          [ngClass]="{'tab_active': isActive(item.id)}"
-          [class.hover-enabled]="!isActive(item.id)">
-          <app-icons [svgType]="'icon-' + item.id" [isActive]="isActive(item.id)"></app-icons>
-          <div [class.fade]="isCollapsed" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{item.title}}</div>
-        </a>
-      </ng-container>
+    <p class="nav_view" @fadeInOut *ngIf="!isCollapsed else divider">WORKSPACE</p>
+    <div class="nav_tabs">
+      <div *ngFor="let item of navItems">
+        <ng-container *ngIf="item.category == 'workspace'">
+          <a class="nav_view_tab" (click)="toggleIcon(item.id)"
+            [ngClass]="{'tab_active': isActive(item.id)}"
+            [class.hover-enabled]="!isActive(item.id)">
+            <app-icons [svgType]="'icon-' + item.id" [isActive]="isActive(item.id)"></app-icons>
+            <div [class.fade]="isCollapsed" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{item.title}}</div>
+          </a>
+        </ng-container>
+      </div>
     </div>
-
   </div>
 
-  <div class="nav_help" *ngIf="!isCollapsed else nav_help_collapsed">
-    Having trouble with the website?<br>
-    <a class="link">Contact the team here.</a>
+  <!-- <div class="nav_help" *ngIf="!isCollapsed else nav_help_collapsed" [@fadeInOut]>
+    <div  style="white-space: pre; overflow: hidden; text-overflow: ellipsis;">
+      Having trouble with the website?<br>
+      <a class="link">Contact the team here.</a>
+    </div>
   </div>
   <ng-template #nav_help_collapsed>
-    <div class="nav_help_collapsed">
+    <div class="nav_help_collapsed" [@fadeInOut]>
       <app-icons svgType="icon-help"></app-icons>
     </div>
-  </ng-template>
+  </ng-template> -->
+
+  <div class="nav_help" style="display: grid;">
+    <div>a</div>
+    <div>a</div>
+    <!-- <div *ngIf="!isCollapsed" @fadeInOut>
+      <div  style="white-space: pre; overflow: hidden; text-overflow: ellipsis;">
+        Having trouble with the website?<br>
+        <a class="link">Contact the team here.</a>
+      </div>
+    </div>
+    <div class="nav_help_collapsed" *ngIf="isCollapsed" @fadeInOut>
+      <app-icons svgType="icon-help"></app-icons>
+    </div> -->
+  </div>
+
 </div>
 

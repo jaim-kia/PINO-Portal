@@ -7,23 +7,20 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, IconsComponent, RouterModule],
+  imports: [CommonModule, IconsComponent, RouterModule, ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
   animations: [
     trigger('fadeInOut', [
-      state('in', style({
-        opacity: 1,
-        display: 'block' // or 'flex', 'inline-block', etc.
-      })),
-      state('out', style({
-        opacity: 0,
-        display: 'none'
-      })),
-      transition('in <=> out', animate('300ms ease-in-out'))
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms ease-out', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('300ms ease-in', style({ opacity: 0 }))
+      ])
     ])
   ]
-  
 })
 
 export class SidebarComponent {
