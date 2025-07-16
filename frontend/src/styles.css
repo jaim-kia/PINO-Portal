@@ -111,4 +111,14 @@ font-weight: 300 900;
 font-display: swap;
 font-style: italic;
 }
+@font-face {
+  font-family: 'Gambarino-Regular';
+  src: url('assets/fonts/Gambarino-Regular.woff2') format('woff2'),
+       url('assets/fonts/Gambarino-Regular.woff') format('woff'),
+       url('assets/fonts/Gambarino-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
 
