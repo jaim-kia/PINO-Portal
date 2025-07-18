@@ -88,7 +88,8 @@
     background: #0084D4;
   }
   .nav_help {
-    margin: auto 20px 0px 20px;
+    /* margin: auto 20px 0px 20px; */
+    margin-top: auto;
     text-align: right;
     font-size: 12px;
     font-style: normal;
@@ -97,7 +98,10 @@
   }
 
   .nav_help_collapsed {
-    /* margin-top: auto; */
+    /* margin-left: auto; */
+    margin-top: auto;
+    margin-right: auto;
+    margin-left: 8px;
     /* position: absolute; */
     cursor: pointer;
   }
@@ -270,16 +274,17 @@
     </div>
   </ng-template> -->
 
-  <div class="nav_help" style="display: grid;">
-    <div>a</div>
-    <div>a</div>
-    <!-- <div *ngIf="!isCollapsed" @fadeInOut>
-      <div  style="white-space: pre; overflow: hidden; text-overflow: ellipsis;">
+  <div class="nav_help" style="display: flex;">
+    <div class="nav_help_collapsed" *ngIf="isCollapsed" @fadeInOut>
+      <app-icons svgType="icon-help"></app-icons>
+    </div>
+    <div *ngIf="!isCollapsed" @fadeInOut style="margin-left: auto; margin-right: 20px;">
+      <div style="white-space: pre; overflow: hidden; text-overflow: ellipsis;">
         Having trouble with the website?<br>
         <a class="link">Contact the team here.</a>
       </div>
     </div>
-    <div class="nav_help_collapsed" *ngIf="isCollapsed" @fadeInOut>
+    <!-- <div class="nav_help_collapsed" *ngIf="isCollapsed" @fadeInOut>
       <app-icons svgType="icon-help"></app-icons>
     </div> -->
   </div>
