@@ -1,0 +1,269 @@
+<style>
+.announcement-preview {
+    display: flex;
+    min-height: 155px;
+    padding: var(--Modules-module-padding, 20px);
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--Spacing-spacing-s, 12px);
+    flex: 1 0 0;
+    border-radius: var(--Modules-module-radius, 16px);
+    background: var(--Fills-Module, #FFF);
+
+    transition: all 0.2s ease;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.announcement-preview:hover {
+    border-radius: var(--Modules-active-radius, 32px);
+    background: var(--Fills-Module, #FFF);
+    box-shadow: 1px 1px 8px 0px rgba(26, 26, 26, 0.16);
+}
+
+.announcement-preview h3 {
+    margin: 8px 0 4px;
+    color: #333;
+}
+
+.preview {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--Spacing-spacing-s, 12px);
+    align-self: stretch;
+}
+.preview  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--Spacing-spacing-xs, 8px);
+    align-self: stretch;
+}
+
+.announcement-preview .preview .content h5 {
+    font-family: 'Satoshi-Regular';
+    font-size: 18px;
+    font-style: medium;
+    line-height: 120%; 
+    margin: 0%;
+}
+
+.title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    align-self: stretch;
+    overflow: hidden;
+    color: var(--Text-Color-text-default, #1A1A1A);
+    text-overflow: ellipsis;
+}
+
+.preview-info {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    align-self: stretch;
+
+    overflow: hidden;
+    color: var(--Text-Color-text-secondary, rgba(26, 26, 26, 0.70));
+    text-overflow: ellipsis;
+
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%
+}
+
+.announcement-preview .preview .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.tag {
+    display: inline-block;
+    padding: 4px 8px;
+    align-items: center;
+    border-radius: 16px;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+
+    font-family: 'Satoshi-Regular';
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 12px */
+    text-transform: uppercase;
+}
+
+.date {
+    color: #1A1A1A;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.FullPost_Wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+    align-self: stretch;
+    width: 600px;
+
+    border-radius: var(--Modules-module-radius, 16px);
+    background: var(--Fills-Modal, #FFF);
+    box-shadow: 2px 0px 8px 0px rgba(26, 26, 26, 0.08);
+}
+
+.Post_Wrapper {
+    display: flex;
+    padding: var(--Spacing-spacing-xl, 32px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--Spacing-spacing-m, 16px);
+    align-self: stretch;
+}
+
+.Post_Wrapper .tag {
+    display: flex;
+    padding: var(--Spacing-spacing-xxs, 4px) var(--Spacing-spacing-xs, 8px);
+    align-items: center;
+    gap: 8px;
+    border-radius: var(--Radius-radius-m, 16px);
+}
+
+.Post_Wrapper .modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--Spacing-spacing-xs, 8px);
+    align-self: stretch;
+}
+
+.Post_Wrapper .modal-header h4 {
+    margin: 0%;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%;
+}
+
+.modal-content {
+    display: flex;
+    /* width: 1000px; */
+    width: 600px;
+    height: 700px;
+    align-items: center;
+    border-radius: var(--modal-radius, 24px);
+    background: var(--Fills-Module, #FFF);
+    box-shadow: 1px 1px 8px 0px rgba(26, 26, 26, 0.16);
+    animation: slideUp 0.3s ease;
+    position: relative;
+}
+
+.modal-body p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+}
+
+.close-button {
+    cursor: pointer;
+    display: flex;
+    padding: var(--Spacing-spacing-xs, 8px);
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    right: 8.5px;
+    top: 8px;
+    border-radius: var(--field-radius, 16px);
+    background: var(--Fills-Pill, #F2F2F2);
+}
+
+.close-button:hover {
+    /* invert */
+}
+
+
+
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+</style>
+
+<div class="announcement-preview" (click)="toggleModal()">
+    <div class="preview">
+        <div class="header">
+            <div class="tag" [style.background-color]="tag.color"> {{ tag.type }} </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                <path d="M10.4553 3.13692C10.597 2.85347 10.804 2.60775 11.0593 2.42001C11.3146 2.23227 11.6109 2.10788 11.9237 2.0571C12.2365 2.00631 12.5569 2.03059 12.8584 2.12792C13.16 2.22525 13.4342 2.39286 13.6583 2.61692L17.7153 6.67392C17.9393 6.89802 18.1069 7.17216 18.2043 7.47374C18.3016 7.77532 18.3259 8.09571 18.2751 8.40852C18.2243 8.72132 18.0999 9.01758 17.9122 9.27288C17.7244 9.52818 17.4787 9.73521 17.1953 9.87692L13.7373 11.6069C13.4087 11.7711 13.1518 12.05 13.0153 12.3909L11.5793 15.9809C11.5178 16.1347 11.4192 16.2708 11.2923 16.377C11.1653 16.4832 11.0139 16.5563 10.8518 16.5896C10.6896 16.6229 10.5217 16.6154 10.3631 16.5678C10.2046 16.5202 10.0603 16.434 9.94325 16.3169L7.33325 13.7069L4.04025 16.9989H3.33325V16.2919L6.62625 12.9999L4.01625 10.3899C3.89913 10.273 3.81286 10.1288 3.76521 9.97024C3.71755 9.81173 3.70998 9.64386 3.74318 9.48171C3.77639 9.31955 3.84933 9.16817 3.95545 9.04114C4.06158 8.91412 4.19758 8.81543 4.35125 8.75392L7.94125 7.31792C8.28236 7.18179 8.56168 6.92525 8.72625 6.59692L10.4553 3.13692ZM12.9513 3.32392C12.8392 3.21199 12.7022 3.12828 12.5514 3.07967C12.4007 3.03107 12.2406 3.01896 12.0842 3.04435C11.9279 3.06974 11.7798 3.13189 11.6522 3.2257C11.5246 3.31951 11.4211 3.44229 11.3503 3.58392L9.62025 7.04292C9.34654 7.5904 8.8815 8.01844 8.31325 8.24592L4.72325 9.68192L10.6503 15.6099L12.0863 12.0199C12.3138 11.4511 12.7422 10.9857 13.2903 10.7119L16.7483 8.98192C16.8897 8.91101 17.0123 8.80753 17.106 8.68001C17.1997 8.55249 17.2618 8.40455 17.2871 8.24836C17.3125 8.09218 17.3005 7.9322 17.252 7.78157C17.2035 7.63095 17.12 7.49398 17.0083 7.38192L12.9513 3.32392Z" fill="#1A1A1A"/>
+            </svg>
+        </div>
+        <div class="content">
+            <h5 class="title">{{ title }}</h5>
+            <div class="preview-info">{{ content }}</div>
+        </div>
+    </div>
+    <div class="date">{{ date | date }}</div>
+
+
+</div>
+    <div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
+
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="close-button" (click)="closeModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M1 1L13.5 13.5M13.5 1L1 13.5" stroke="#1A1A1A"/>
+            </svg>
+        </div>
+        <div class="FullPost_Wrapper">
+            <div class="Post_Wrapper">
+                <div class="tag" [style.background-color]="tag.color">
+                    {{ tag.type }}
+                </div>
+                <div class="modal-header">
+                    <h4>{{ title }}</h4>
+                    <span class="date">{{ date | date }}</span>
+                </div>
+                <div class="modal-body">
+                    <p>{{ content }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconsComponent } from '../../../components/icons/icons.component';
+import { AnnouncementBlockComponent } from '../../../components/announcement-block/announcement-block.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,IconsComponent],
+  imports: [CommonModule,IconsComponent,AnnouncementBlockComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

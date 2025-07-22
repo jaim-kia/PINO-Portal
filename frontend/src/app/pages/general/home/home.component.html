@@ -120,15 +120,11 @@
         align-self: stretch;
     }
     .content_announcement {
-        display: flex;
-        min-height: 155px;
-        padding: 20px;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 12px;
-        flex: 1 0 0;
-        border-radius: 16px;
-        background-color: #FFF;
+        width: 100%;
+    }
+    .content_announcement:hover {
+        border-radius: 32px;
+        box-shadow: 1px 1px 8px 0px rgba(26, 26, 26, 0.16);
     }
 </style>
 <div class="home-component">
@@ -222,10 +218,31 @@
             </div>
             <div class="content">
                 <div class="content_announcement">
+                    <app-announcement-block 
+                        [title]="'Office Maintenance Schedule'"
+                        [tag]="{ type: 'MEMOS', color: '#F93822' }"
+                        [date]="'2025-06-7'"
+                        [isPinned]="true"
+                        [content]="'Please be advised that routine maintenance of the office facilities will take place on Tuesday, June 17 from 8:00 AM to 6:00 PM.'">
+                    </app-announcement-block>
                 </div>
                 <div class="content_announcement">
+                    <app-announcement-block 
+                        [title]="'Independence Day Break'"
+                        [tag]="{ type: 'HOLIDAYS', color: '#F0B323' }"
+                        [date]="'2025-06-09'"
+                        [isPinned]="false"
+                        [content]="'PINO Studio will be observing a non-working holiday on Wednesday, June 12 in celebration of Independence Day.'">
+                    </app-announcement-block>
                 </div>
                 <div class="content_announcement">
+                    <app-announcement-block 
+                        [title]="'Happy Birthday, Kier!'"
+                        [tag]="{ type: 'BIRTHDAYS', color: '#154734' }"
+                        [date]="'2025-06-07'"
+                        [isPinned]="false"
+                        [content]="'Let’s give a warm PINO birthday shoutout to Kier—here’s to another year of creativity and caffeine!'">
+                    </app-announcement-block>
                 </div>
             </div>
         </div>
