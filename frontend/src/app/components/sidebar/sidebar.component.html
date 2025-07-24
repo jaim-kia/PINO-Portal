@@ -1,222 +1,23 @@
-<style>
-  .navbar {
-    float: left;
-    background-color: #005EB8;
-    box-shadow: -4px 0px 20px -5px rgba(26, 26, 26, 0.25) inset;
-    padding: 40px 12px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    color: white;
-    font-family: 'Satoshi-Regular';
-    box-sizing: border-box;
-    transition: all 0.5s ease;
-  }
-  .navbar.collapsed {
-    width: 64px;
-  }
-  .navbar:not(.collapsed) {
-    width: 350px;
-  }
-
-  .nav_header {
-    padding: 0px 8px;
-    display: flex;
-    gap: 10px;
-  }
-  .nav_header_profile {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .nav_header_actions {
-    margin-left: auto;
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-  }
-  .profile_display {
-    background-color: aliceblue;
-    width: 52px;
-    height: 52px;
-    border-radius: 8px;
-  }
-  .profile_details {
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-  }
-  .edit_details {
-    font-size: 12px;
-    text-decoration-line: underline;
-    opacity: 0.5;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
-  }
-  .nav_view {
-    padding: 0px 8px;
-    /* margin: 0px 0px 12px 0px; */
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
-    letter-spacing: 0.05rem;
-    position: absolute;
-  }
-  .nav_view_tab {
-    display: flex;
-    padding: var(--Spacing-spacing-s, 8px);
-    align-items: center;
-    gap: 10px;
-    align-self: stretch;
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-    max-height: 40px;
-    overflow: hidden;
-
-  }
-  .nav_view_tab.hover-enabled:hover{
-    border-radius: var(--Radius-radius-s, 8px);
-    background: #0171C6;
-  }
-  .nav_view_tab.tab_active {
-    border-radius: var(--Radius-radius-s, 8px);
-    background: #0084D4;
-  }
-  .nav_help {
-    /* margin: auto 20px 0px 20px; */
-    margin-top: auto;
-    text-align: right;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 140%;
-  }
-
-  .nav_help_collapsed {
-    /* margin-left: auto; */
-    margin-top: auto;
-    margin-right: auto;
-    margin-left: 8px;
-    /* position: absolute; */
-    cursor: pointer;
-  }
-    
-  .link {
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-skip-ink: auto;
-    text-decoration-thickness: auto;
-    text-underline-offset: auto;
-    text-underline-position: from-font;
-    cursor: pointer;
-  }
-  .divider {
-    display: flex;
-    height: 12px;
-    width: 40px;
-    justify-content: center;
-    /* padding: 0px 8px; */
-    margin: 0px auto 0 auto;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
-    letter-spacing: 0.05rem;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-  }
-
-  .nav_header_collapsed {
-    display: flex;
-    width: 40px;
-    gap: 12px;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-  }
-
-  .nav_close, .nav_notif {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  @keyframes dissapear {
-    0%   {
-      opacity: 100%;
-      display: flex;
-    }
-    100% {
-      opacity: 0%;
-      display: none;
-    }
-  }
-
-  .fade {
-    animation: dissapear 0.5s forwards;
-  }
-
-  .nav_tabs {
-    margin-top: 24px;
-  }
-
-  .nav_general_collapsed {
-    animation: apply-margin 300ms forwards;
-  }
-
-  @keyframes apply-margin {
-  0%, 99.99% {
-    margin-top: 0;
-  }
-  100% {
-    margin-top: 134.4px; 
-  }
-}
-
-</style>
-
-
 <div class="navbar" [class.collapsed]="isCollapsed">
   <div class="nav_header" @fadeInOut *ngIf="!isCollapsed; else nav_header_collapsed">
-    <div class="nav_header_profile" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+    <div class="nav_header_profile">
       <div class="profile_display">
           <!-- insert image remove bg -->
       </div>
       <div class="profile_details">
-        <div>Hi, User</div>
-        <div class="edit_details" style="cursor: pointer;"><a>Edit Profile</a></div>
+        <div>Hi, User!</div>
+        <a class="link" style="opacity: 0.5;">Edit Profile</a>
       </div>
     </div>
     <div class="nav_header_actions">
-      <div class="nav_notif">
-        <app-icons svgType="icon-notif"></app-icons>
-      </div>
-      <div class="nav_close" (click)="toggleSidebar()">
-        <app-icons svgType="icon-close"></app-icons>
-      </div>
+        <app-icons svgType="icon-notif" class="nav_icon"></app-icons>
+        <app-icons svgType="icon-close" class="nav_icon" (click)="toggleSidebar()"></app-icons>
     </div>
   </div>
   <ng-template #nav_header_collapsed>
     <div class="nav_header_collapsed" @fadeInOut >
-      <div style="cursor: pointer;">
-        <app-icons svgType="icon-menu" (click)="toggleSidebar()"></app-icons>
-      </div>
-      <div class="nav_notif">
-        <app-icons svgType="icon-notif"></app-icons>
-      </div>
+      <app-icons svgType="icon-menu" class="nav_icon" (click)="toggleSidebar()"></app-icons>
+      <app-icons svgType="icon-notif" class="nav_icon"></app-icons>
     </div>
   </ng-template>
 
@@ -229,65 +30,50 @@
   </ng-template>
 
   <div class="nav_general" [class.nav_general_collapsed]="isCollapsed">
-    <p class="nav_view" @fadeInOut *ngIf="!isCollapsed; else divider">GENERAL</p>
+    <p class="nav_view tab" @fadeInOut *ngIf="!isCollapsed; else divider">general</p>
     <div class="nav_tabs">
       <div *ngFor="let item of navItems">
         <ng-container *ngIf="item.category == 'general'">
-          <a class="nav_view_tab" 
+          <div class="nav_view_tab" 
             (click)="toggleIcon(item.id)"
             [ngClass]="{'tab_active': isActive(item.id)}"
             [class.hover-enabled]="!isActive(item.id)">
               <app-icons [svgType]="'icon-' + item.id" [isActive]="isActive(item.id)"></app-icons>
-              <!-- <div *ngIf="!isCollapsed">{{item.title}}</div> -->
-              <div [class.fade]="isCollapsed" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{item.title}}</div>
-          </a>
+              <div class="nav_view_tab_title" @fadeInOut *ngIf="!isCollapsed;">{{item.title}}</div>
+          </div>
         </ng-container>
       </div>
     </div>
   </div>
 
   <div class="nav_workspace">
-    <p class="nav_view" @fadeInOut *ngIf="!isCollapsed else divider">WORKSPACE</p>
+    <p class="nav_view tab" @fadeInOut *ngIf="!isCollapsed else divider">workspace</p>
     <div class="nav_tabs">
       <div *ngFor="let item of navItems">
         <ng-container *ngIf="item.category == 'workspace'">
-          <a class="nav_view_tab" (click)="toggleIcon(item.id)"
+          <div class="nav_view_tab" (click)="toggleIcon(item.id)"
             [ngClass]="{'tab_active': isActive(item.id)}"
             [class.hover-enabled]="!isActive(item.id)">
             <app-icons [svgType]="'icon-' + item.id" [isActive]="isActive(item.id)"></app-icons>
-            <div [class.fade]="isCollapsed" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{item.title}}</div>
-          </a>
+            <div  class="nav_view_tab_title" @fadeInOut *ngIf="!isCollapsed;">{{item.title}}</div>
+          </div>
         </ng-container>
       </div>
     </div>
   </div>
 
-  <!-- <div class="nav_help" *ngIf="!isCollapsed else nav_help_collapsed" [@fadeInOut]>
-    <div  style="white-space: pre; overflow: hidden; text-overflow: ellipsis;">
-      Having trouble with the website?<br>
-      <a class="link">Contact the team here.</a>
-    </div>
-  </div>
-  <ng-template #nav_help_collapsed>
-    <div class="nav_help_collapsed" [@fadeInOut]>
-      <app-icons svgType="icon-help"></app-icons>
-    </div>
-  </ng-template> -->
-
   <div class="nav_help" style="display: flex;">
+    <!-- collapsed -->
     <div class="nav_help_collapsed" *ngIf="isCollapsed" @fadeInOut>
       <app-icons svgType="icon-help"></app-icons>
     </div>
+    <!-- expanded -->
     <div *ngIf="!isCollapsed" @fadeInOut style="margin-left: auto; margin-right: 20px;">
       <div style="white-space: pre; overflow: hidden; text-overflow: ellipsis;">
         Having trouble with the website?<br>
         <a class="link">Contact the team here.</a>
       </div>
     </div>
-    <!-- <div class="nav_help_collapsed" *ngIf="isCollapsed" @fadeInOut>
-      <app-icons svgType="icon-help"></app-icons>
-    </div> -->
   </div>
-
 </div>
 

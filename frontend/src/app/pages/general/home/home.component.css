@@ -1,0 +1,89 @@
+/* component layouts */
+.home_marquee {
+    color: var(--cream);
+    background: var(--pino-black);
+    display: flex;
+    overflow: hidden;
+    padding-block: 16px;
+    user-select: none;
+    gap: 24px;
+}
+
+.home_marquee ul {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    gap: 24px;
+    min-width: 100%;
+    margin: 0px;
+    animation: scroll 20s linear infinite;
+}
+
+.home_banner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xxs);
+    padding: 40px 64px;
+}
+.section_pattern {
+    display: flex;
+}
+.clover-background {
+    width: 100%;
+    height: 32px;
+    background-image: 
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='32' viewBox='0 0 64 32'%3E%3C!-- Blue Clover --%3E%3Cpath fill='%23005EB8' d='M20.1917 2.02793C22.8923 -0.672665 27.2715 -0.672665 29.9739 2.02793C32.6762 4.72852 32.6745 9.10777 29.9739 11.8101C29.8861 11.8979 29.7965 11.9822 29.707 12.063L29.714 12.07C29.714 12.07 25.2241 16.4036 16.0003 16.0015C15.5982 6.77767 19.9318 2.2878 19.9318 2.2878L19.9388 2.29482C20.0214 2.20351 20.1039 2.11573 20.1917 2.02793Z'/%3E%3Cpath fill='%23005EB8' d='M11.8077 29.9746C9.10708 32.6751 4.72783 32.6751 2.02548 29.9746C-0.675112 27.274 -0.675112 22.8947 2.02548 20.1924C2.11328 20.1046 2.20283 20.0203 2.29238 19.9395L2.28536 19.9325C2.28536 19.9325 6.77523 15.5989 15.999 16.001C16.4011 25.2248 12.0676 29.7147 12.0676 29.7147L12.0605 29.7077C11.978 29.799 11.8955 29.8868 11.8077 29.9746Z'/%3E%3Cpath fill='%23005EB8' d='M2.02646 11.8077C-0.674135 9.10709 -0.674135 4.72784 2.02646 2.02549C4.72706 -0.675106 9.1063 -0.675106 11.8087 2.02549C11.8965 2.11328 11.9807 2.20284 12.0615 2.29239L12.0685 2.28536C12.0685 2.28536 16.4021 6.77523 16 15.999C6.77621 16.4011 2.28634 12.0676 2.28634 12.0676L2.29336 12.0605C2.20205 11.978 2.11426 11.8955 2.02646 11.8077Z'/%3E%3Cpath fill='%23005EB8' d='M29.9732 20.1924C32.6738 22.893 32.6738 27.2722 29.9732 29.9746C27.2726 32.6751 22.8934 32.6751 20.191 29.9746C20.1032 29.8868 20.0189 29.7972 19.9382 29.7077L19.9311 29.7147C19.9311 29.7147 15.5975 25.2248 15.9997 16.001C25.2235 15.5989 29.7133 19.9325 29.7133 19.9325L29.7063 19.9395C29.7976 20.022 29.8854 20.1046 29.9732 20.1924Z'/%3E%3C!-- Pink Clover --%3E%3Cpath fill='%23FCAFC0' transform='translate(32 0)' d='M19.3529 23.9994C19.3529 27.1325 18.0697 29.9654 16.0002 31.9998C13.9289 29.9637 12.6475 27.1325 12.6475 23.9994C12.6475 20.8663 13.9306 18.0334 16.0002 16.0008C18.0715 18.0334 19.3529 20.8663 19.3529 23.9994Z'/%3E%3Cpath fill='%23FCAFC0' transform='translate(32 0)' d='M19.3529 7.9984C19.3529 11.1315 18.0697 13.9645 16.0002 15.9988C13.9289 13.9627 12.6475 11.1315 12.6475 7.9984C12.6475 4.8653 13.9306 2.03234 16.0002 -0.000228735C18.0715 2.03234 19.3529 4.8653 19.3529 7.9984Z'/%3E%3Cpath fill='%23FCAFC0' transform='translate(32 0)' d='M8.00087 19.3533C4.86758 19.3533 2.03445 18.0702 1.46541e-07 16.0008C2.0362 13.9296 4.86758 12.6483 8.00087 12.6483C11.1342 12.6483 13.9673 13.9314 16 16.0008C13.9673 18.072 11.1342 19.3533 8.00087 19.3533Z'/%3E%3Cpath fill='%23FCAFC0' transform='translate(32 0)' d='M24.0009 19.3533C20.8676 19.3533 18.0344 18.0702 16 16.0008C18.0362 13.9296 20.8676 12.6483 24.0009 12.6483C27.1342 12.6483 29.9673 13.9314 32 16.0008C29.9673 18.072 27.1342 19.3533 24.0009 19.3533Z'/%3E%3C/svg%3E");
+    background-repeat: repeat-x; 
+}
+
+.section_content {
+    display: flex;
+    padding: 40px 64px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--section-gap);
+    align-self: stretch;
+}
+
+.section_announcements {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m);
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    width: 100%;
+}
+
+.action_buttons {
+    margin-left: auto;
+    display: flex;
+    gap: var(--spacing-m);
+    text-decoration-line: underline;
+
+}
+
+.content {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--view-gutter);
+    align-self: stretch;
+}
+
+.content_announcement {
+    width: 100%;
+}
+
+/* animation */
+@keyframes scroll {
+    to {
+        transform: translateX(calc(-100% - 24px));
+    }
+}

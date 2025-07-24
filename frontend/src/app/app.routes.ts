@@ -8,6 +8,7 @@ import { FormsComponent } from './pages/general/forms/forms.component';
 import { TodoComponent } from './pages/workspace/todo/todo.component';
 import { NotesComponent } from './pages/workspace/notes/notes.component';
 import { LinksComponent } from './pages/workspace/links/links.component';
+import { AnnouncementPageComponent } from './pages/internal/announcement-page/announcement-page.component';
 
 export const routes: Routes = [
     {path: 'home', component: HomeComponent},
@@ -18,6 +19,7 @@ export const routes: Routes = [
     {path: 'todo', component: TodoComponent},
     {path: 'notes', component: NotesComponent},
     {path: 'links', component: LinksComponent},
+    {path: 'home/announcement', component: AnnouncementPageComponent},
 ];
 
 @NgModule({

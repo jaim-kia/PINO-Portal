@@ -1,0 +1,177 @@
+/* sidebar specific utilities */
+.nav_icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* component layouts */
+/* general */
+.navbar {
+    background-color: var(--main-bg);
+    color: var(--main-text);
+    box-shadow: -4px 0px 20px -5px rgba(26, 26, 26, 0.25) inset;
+    float: left;
+    display: flex;
+    width: 320px;
+    height: 100vh;
+    padding: var(--spacing-xxl) var(--spacing-s);
+    flex-direction: column;
+    gap: 32px;
+    box-sizing: border-box;
+    transition: all 0.5s ease;
+}
+
+.navbar.collapsed {
+    width: 64px;
+}
+/* ------------------------- */
+
+/* Profile */
+.nav_header {
+    display: flex;
+    padding: 0px var(--spacing-s);
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.nav_header_collapsed {
+    display: flex;
+    width: 40px;
+    gap: 12px;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+}
+
+.nav_header_profile {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: elipsis;
+}
+
+.nav_header_actions {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-s);
+    margin-left: auto;
+}
+
+.profile_display {
+    background-color: var(--pino-white);
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-s);
+}
+
+.profile_details {
+    /* cleanup */
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+/* ------------------------- */
+
+/* tabs */
+.divider {
+    display: flex;
+    height: 12px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+    /* position absolute for element replacement */
+    position: absolute;
+}
+
+.nav_view {
+    padding: 0px 8px;
+    /* position absolute for element replacement */
+    position: absolute;
+}
+
+.nav_general_collapsed {
+    animation: apply-general-margin 300ms forwards;
+}
+
+.nav_tabs {
+    margin-top: 24px;
+}
+
+.nav_view_tab {
+    display: flex;
+    padding: var(--spacing-xs);
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    cursor: pointer;
+    border-radius: var(--radius-s);
+}
+
+.nav_view_tab_title {
+    /* for collapse */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* hover and active color */
+.nav_view_tab.hover-enabled:hover{
+    /* background: #0171C6; */
+    background-color: var(--pino-blue);
+    background-image: linear-gradient(var(--tab-hover), var(--tab-hover));
+    background-blend-mode: overlay;
+}
+
+.nav_view_tab.tab_active {
+    background-color: var(--pino-blue);
+    background-image: linear-gradient(var(--tab-active), var(--tab-active));
+    background-blend-mode: overlay;
+}
+/* ------------------------- */
+
+/* help */
+.nav_help {
+    margin-top: auto;
+    text-align: right;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+}
+
+.nav_help_collapsed {
+    margin-top: auto;
+    margin-right: auto;
+    margin-left: 8px;
+    cursor: pointer;
+}
+/* ------------------------- */
+
+/* Animation */
+@keyframes apply-general-margin {
+    0%, 99.99% {
+        margin-top: 0;
+    }
+    100% {
+        margin-top: 134.4px; 
+    }
+}
+
+@keyframes dissapear {
+    0%   {
+        opacity: 100%;
+        display: flex;
+    }
+    100% {
+        opacity: 0%;
+        display: none;
+    }
+}

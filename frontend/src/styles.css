@@ -1,6 +1,11 @@
 /* Global Resets */
-body, html, h1, h2, h3, h4, h5, h6, p {
-    margin: 0;
+body, html, h1, h2, h3, h4, h5, h6, p, span, a, small {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Satoshi-Regular';
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: 0px;
 }
 
 /* Global Variables */
@@ -11,32 +16,32 @@ body, html, h1, h2, h3, h4, h5, h6, p {
     --pino-blue: #005EB8;
     --pino-green: #154734;
     --pino-pink: #FCAFC0;
-    --pino-yellow: #F93822;
-    --pino-white: #F0B323;
-    --pino-gray: #FFFFFF;
-    --pino-black: #F2F2F2;
+    --pino-yellow: #F0B323;
+    --pino-white: #FFFFFF;
+    --pino-gray: #F2F2F2;
+    --pino-black: #1A1A1A;
     --cream: #F3EADF;
 
     --pino-red-20: #F9382233;
     --pino-blue-20: #005EB833;
     --pino-green-20: #15473433;
     --pino-pink-20: #FCAFC033;
-    --pino-white-20: #F0B32333;
+    --pino-white-20: #FFFFFF33;
 
     /* spacing */
-    --spacing-xxs: 4;
-    --spacing-xs: 8;
-    --spacing-s: 12;
-    --spacing-m: 16;
-    --spacing-l: 24;
-    --spacing-xl: 32;
-    --spacing-xxl: 40;
+    --spacing-xxs: 4px;
+    --spacing-xs: 8px;
+    --spacing-s: 12px;
+    --spacing-m: 16px;
+    --spacing-l: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 40px;
 
     /* radius */
-    --radius-s: 8;
-    --radius-m: 16;
-    --radius-l: 24;
-    --radius-xl: 32;
+    --radius-s: 8px;
+    --radius-m: 16px;
+    --radius-l: 24px;
+    --radius-xl: 32px;
     /* -----------------------------*/
 
 
@@ -53,8 +58,8 @@ body, html, h1, h2, h3, h4, h5, h6, p {
     --text-secondary-dark: #FFFFFFB3;
 
     /* view */
-    --view-margin: 64;
-    --view-gutter: 20;
+    --view-margin: 64px;
+    --view-gutter: 20px;
 
     /* modules */
     --module-radius: var(--radius-m);
@@ -71,11 +76,80 @@ body, html, h1, h2, h3, h4, h5, h6, p {
     --background-fill: var(--cream);
     --module-fill: var(--pino-white);
     --modal-fill: var(--pino-white);
-    --pill-fill: var(--pino-white);
+    --pill-fill: var(--pino-gray);
     --fill-hover: var(--pino-white);
+
+    /* themes */
+    --main-bg: var(--pino-blue);
+    --main-text: var(--pino-white);
 }
 
+/* Default Typography */
+h1 {
+    font-family: 'Gambarino-Regular';
+    font-size: 48px;
+    line-height: 110%;
+}
+h2 {
+    font-family: 'Gambarino-Regular';
+    font-size: 40px;
+    line-height: 110%;
+}
+h3 {
+    font-family: 'Satoshi-Bold';
+    font-size: 27px;
+    line-height: 110%;
+}
+h4 {
+    font-family: 'Satoshi-Bold';
+    font-size: 23px;
+    line-height: 110%;
+}
+h5 {
+    font-family: 'Satoshi-Medium';
+    font-size: 18px;
+    line-height: 120%;
+}
+p {
+    font-family: "Satoshi-Medium";
+    font-size: 16px;
+    line-height: 140%;
+}
+span {
+    font-family: "Satoshi-Bold";
+    font-size: 16px;
+    line-height: 120%;
+}
+small {
+    font-family: "Satoshi-Medium";
+    font-size: 13px;
+    line-height: 140%;
+}
+a {
+    font-family: "Satoshi-Regular";
+    font-size: 12px;
+    line-height: 120%;
+    cursor: pointer;
+}
+
+
 /* Utility Classes */
+/* Typography Utilities */
+.satoshi-bold {
+    font-family: "Satoshi-Bold";
+}
+.tab {
+    font-family: "Satoshi-Bold";
+    font-size: 10px;
+    line-height: 120%;
+    text-transform: uppercase;
+}
+.link {
+    display: block;
+    text-decoration-line: underline;
+}
+/* -----------------------------*/
+
 
 /* Fonts */
 /* Satoshi Family */
