@@ -41,10 +41,11 @@ export class SidebarComponent {
   constructor(private router: Router) {
     router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
+        const currentUrl = this.router.url;
         console.log(this.router.url);
         
           for (const item of this.navItems) {
-            if (item.id == this.router.url.replace('/','')) {
+            if (currentUrl.startsWith(`/${item.id}`)) {
               item.active = true;
             } else {
               item.active = false;
