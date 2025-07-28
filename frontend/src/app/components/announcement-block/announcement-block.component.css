@@ -114,6 +114,15 @@
     align-items: flex-start;
     gap: var(--spacing-m);
     align-self: stretch;
+    overflow: auto;
+}
+
+.ann-image {
+    border-radius: var(--module-radius) var(--module-radius) 0px 0px;
+    height: 250px;
+    align-self: stretch;
+    object-fit: cover;
+    object-position: center;
 }
 
 .Post_Wrapper .modal-header {
@@ -124,10 +133,158 @@
     align-self: stretch;
 }
 
+.FullComments_Wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-s);
+    align-self: stretch;
+}
+
+.Comments_Wrapper {
+    display: flex;
+    width: 400px;
+    padding: var(--spacing-xxl) var(--module-padding) var(--module-padding) var(--module-padding);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    flex: 1 0 0;
+}
+
+.Comment_thread {
+    width: 100%;
+}
+
+.profile {
+    display: flex;
+    width: 28px;
+    height: 28px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    aspect-ratio: 1/1;
+    border-radius: var(--spacing-xl);
+}
+
+.comment_primary {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.comment_details {
+    width: 100%;
+}
+
+.comment_user {
+    width: 100%;
+    display: flex;
+    padding-top: var(--spacing-s);
+    align-items: center;
+    gap: var(--spacing-s);
+    align-self: stretch;
+}
+
+.profile_details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.comment_content {
+    display: flex;
+    min-height: 30px;
+    align-items: center;
+    margin-left: 46px;
+    align-self: stretch;
+}
+
+.comment_reactions  {
+    display: flex;
+    padding: var(--spacing-xs) 0;
+    align-items: flex-start;
+    margin-left: 46px;
+    flex: 1 0 0;
+}
+
+.comment_replies {
+    margin-left: 46px;
+}
+
+.Interact_Wrapper {
+    display: flex;
+    width: 400px;
+    padding: var(--spacing-s) var(--module-padding) var(--module-padding) var(--module-padding);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-s);
+}
+
+.Engagement_Wrapper {
+    width: 100%;
+    display: flex;
+    padding: var(--spacing-s) 0;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.Announcement_Analytics {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: var(--spacing-s);
+}
+
+.Actions_Wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    align-self: stretch;
+}
+
+.Interact_Button {
+    display: flex;
+    cursor: pointer;
+    padding: var(--spacing-xs) var(--spacing-m);
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-xs);
+    flex: 1 0 0;
+}
+
+.Comment_Field {
+    display: flex;
+    height: 38px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-radius: var(--radius-m);
+    background: var(--pill-fill);
+}
+
+.comment_box {
+    display: flex;
+    padding: var(--spacing-s);
+    align-items: flex-start;
+    gap: 15px;
+    flex: 1 0 0;
+}
+
+.comment_write {
+    width: 100%;
+    align-self: stretch;
+    cursor: text;
+}
+
 .modal-content {
     display: flex;
-    /* width: 1000px; */
-    width: 600px;
+    width: 1000px;
     height: 700px;
     align-items: center;
     border-radius: var(--modal-radius);

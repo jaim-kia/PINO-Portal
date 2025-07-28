@@ -20,7 +20,8 @@ export class AnnouncementBlockComponent {
   @Input() tag: AnnouncementTag = {type: 'MEMOS', color : '#F93822' };
   @Input() date: string = '';
   @Input() isPinned: boolean = false;
-  @Input() content: string = '';
+  @Input() preview: string = '';
+  @Input() imageUrl?: string;
 
   showModal = false;
 

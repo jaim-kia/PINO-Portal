@@ -1,5 +1,5 @@
 /* Global Resets */
-body, html, h1, h2, h3, h4, h5, h6, p, span, a, small {
+body, html, h1, h2, h3, h4, h5, h6, p, span, a, small, pre {
     margin: 0px;
     padding: 0px;
     font-family: 'Satoshi-Regular';
@@ -110,7 +110,7 @@ h5 {
     font-size: 18px;
     line-height: 120%;
 }
-p {
+p, pre {
     font-family: "Satoshi-Medium";
     font-size: 16px;
     line-height: 140%;

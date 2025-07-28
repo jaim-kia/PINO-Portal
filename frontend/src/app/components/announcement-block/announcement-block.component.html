@@ -8,10 +8,13 @@
         </div>
         <div class="content">
             <h5 class="title">{{ title }}</h5>
-            <small class="preview-info">{{ content }}</small>
+            <small class="preview-info">
+                <!-- need to generalize with the main content from ng-content -->
+                {{ preview }}
+            </small>
         </div>
     </div>
-    <div class="date">{{ date | date }}</div>
+    <div class="date">{{ date | date:'longDate' }}</div>
 
 
 </div>
@@ -24,16 +27,116 @@
             </svg>
         </div>
         <div class="FullPost_Wrapper">
+            <img *ngIf="imageUrl" [src]="imageUrl" alt="Announcement image" class="ann-image">
             <div class="Post_Wrapper">
                 <div class="tab tag" [style.background-color]="tag.color">
                     {{ tag.type }}
                 </div>
                 <div class="modal-header">
                     <h4>{{ title }}</h4>
-                    <span class="date">{{ date | date }}</span>
+                    <span class="date">{{ date | date:'longDate' }}</span>
                 </div>
                 <div class="modal-body">
-                    <p>{{ content }}</p>
+                    <ng-content></ng-content>
+                    <!-- add download button if -->
+                </div>
+            </div>
+        </div>
+        <div class="FullComments_Wrapper">
+            <div class="Comments_Wrapper">
+                <!-- content and styles should be moved to separte component -->
+                <div class="Comment_thread">
+                    <div class="comment_details">
+                        <div class="comment_user">
+                            <img src="assets/images/ProfileImage.jpg" alt="Announcement image" class="profile">
+                            <div class="comment_primary">
+                                <div class="profile_details">
+                                    <p>User 1</p>
+                                    <small style="color: var(--text-secondary);">Web Development Intern</small>
+                                </div>
+                                <small style="color: var(--text-secondary);">10:00am</small>
+                            </div>
+                        </div>
+                        <div class="comment_content">
+                            <p>Thank you. See you on Friday!</p>
+                        </div>
+                        <div class="comment_reactions">
+                            <!-- add reactions or app for reactions -->
+                        </div>
+                    </div>
+                    <!-- conditional based on backend -->
+                    <div class="comment_replies">
+                        <!-- same logic as comment but indented -->
+                        <!-- to add: vector connection -->
+
+                        <div class="comment_details">
+                            <div class="comment_user">
+                                <img src="assets/images/ProfileImage.jpg" alt="Announcement image" class="profile">
+                                <div class="comment_primary">
+                                    <div class="profile_details">
+                                        <p>User 2</p>
+                                        <small style="color: var(--text-secondary);">Web Design Intern</small>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">10:00am</small>
+                                </div>
+                            </div>
+                            <div class="comment_content">
+                                <p>See you!</p>
+                            </div>
+                            <div class="comment_reactions">
+                                <!-- add reactions or app for reactions -->
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="Interact_Wrapper">
+                <div class="Engagement_Wrapper">
+                    <div class="Reaction_Summary" style="display: flex; gap: 4px; align-items: center;">
+                        <div>
+                            ❤️
+                            <!-- placeholder svg -->
+                        </div>
+                        <small>13 reacts</small>
+                    </div>
+                    <div class="Announcement_Analytics">
+                        <small>2 comments</small>
+                        <small>·</small>
+                        <small>12 shares</small>
+                    </div>
+                </div>
+                <div class="Actions_Wrapper">
+                    <div class="Interact_Button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                            <path d="M10.8851 2.29374C11.2251 1.31674 12.5171 0.86674 13.3151 1.70374C13.4791 1.87374 13.6411 2.05774 13.7511 2.22274C14.0711 2.70274 14.2061 3.33574 14.2551 3.95274C14.3051 4.57974 14.2711 5.25374 14.2071 5.86474C14.1491 6.39556 14.0687 6.92369 13.9661 7.44774L13.9561 7.49974H14.8391C15.2786 7.49967 15.7128 7.59617 16.1108 7.7824C16.5089 7.96863 16.8612 8.24005 17.1428 8.57746C17.4244 8.91487 17.6285 9.31003 17.7405 9.735C17.8525 10.16 17.8698 10.6044 17.7911 11.0367L17.1071 14.7977C16.9956 15.4115 16.7578 15.9953 16.4086 16.5122C16.0595 17.0291 15.6067 17.4678 15.079 17.8004C14.5513 18.133 13.9602 18.3522 13.3432 18.4442C12.7263 18.5362 12.0969 18.4989 11.4951 18.3347L5.89514 16.8077C5.44729 16.6854 5.04234 16.4409 4.72566 16.1014C4.40898 15.7619 4.19308 15.341 4.10214 14.8857L3.74914 13.1207C3.47114 11.7317 4.53314 10.5617 5.66214 10.1157C5.96858 10.0027 6.25286 9.83682 6.50214 9.62574C8.20914 8.11174 8.82714 6.90274 9.88714 4.77574C10.2411 4.06574 10.6051 3.09974 10.8851 2.29374ZM12.8501 7.87874V7.87674L12.8521 7.86974L12.8591 7.83874C12.9053 7.64499 12.9473 7.45028 12.9851 7.25474C13.0611 6.86674 13.1521 6.33474 13.2121 5.75974C13.2731 5.18274 13.3021 4.57574 13.2581 4.03174C13.2141 3.47574 13.0981 3.04674 12.9181 2.77674C12.8204 2.64017 12.7113 2.51206 12.5921 2.39374C12.3931 2.18574 11.9641 2.23374 11.8301 2.62174C11.5471 3.43574 11.1661 4.45174 10.7821 5.22174C9.71514 7.36274 9.02614 8.72374 7.16614 10.3737C6.82614 10.6757 6.42214 10.8907 6.03014 11.0457C5.15014 11.3937 4.58314 12.1937 4.73014 12.9247L5.08214 14.6897C5.13683 14.963 5.26657 15.2156 5.4568 15.4193C5.64703 15.6229 5.89023 15.7696 6.15914 15.8427L11.7591 17.3697C12.2271 17.4973 12.7164 17.5262 13.1961 17.4547C13.6758 17.3831 14.1354 17.2127 14.5457 16.9541C14.956 16.6955 15.3081 16.3545 15.5797 15.9526C15.8512 15.5508 16.0363 15.0969 16.1231 14.6197L16.8071 10.8577C16.8596 10.5695 16.8481 10.2732 16.7734 9.98991C16.6987 9.7066 16.5627 9.44316 16.3749 9.21822C16.1872 8.99328 15.9523 8.81233 15.6869 8.68818C15.4216 8.56403 15.1321 8.4997 14.8391 8.49974H13.3341C13.2583 8.49957 13.1834 8.48213 13.1153 8.44876C13.0472 8.41538 12.9875 8.36694 12.9409 8.30711C12.8943 8.24727 12.8619 8.1776 12.8461 8.10339C12.8304 8.02917 12.8318 7.95235 12.8501 7.87874Z" fill="#1A1A1A" fill-opacity="0.7"/>
+                        </svg>
+                        <p style="color: var(--text-secondary);">Like</p>
+                    </div>
+                    <div class="Interact_Button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10.122 3.13692C10.2637 2.85347 10.4707 2.60775 10.726 2.42001C10.9813 2.23227 11.2776 2.10788 11.5904 2.0571C11.9032 2.00631 12.2236 2.03059 12.5252 2.12792C12.8268 2.22525 13.1009 2.39286 13.325 2.61692L17.382 6.67392C17.6061 6.89802 17.7737 7.17216 17.871 7.47374C17.9683 7.77532 17.9926 8.09571 17.9418 8.40852C17.891 8.72132 17.7667 9.01758 17.5789 9.27288C17.3912 9.52818 17.1455 9.73521 16.862 9.87692L13.404 11.6069C13.0755 11.7711 12.8186 12.05 12.682 12.3909L11.246 15.9809C11.1846 16.1347 11.086 16.2708 10.959 16.377C10.832 16.4832 10.6807 16.5563 10.5185 16.5896C10.3563 16.6229 10.1884 16.6154 10.0299 16.5678C9.8713 16.5202 9.72703 16.434 9.61 16.3169L7 13.7069L3.707 16.9989H3V16.2919L6.293 12.9999L3.683 10.3899C3.56587 10.273 3.47961 10.1288 3.43195 9.97024C3.38429 9.81173 3.37673 9.64386 3.40993 9.48171C3.44314 9.31955 3.51607 9.16817 3.6222 9.04114C3.72833 8.91412 3.86433 8.81543 4.018 8.75392L7.608 7.31792C7.94911 7.18179 8.22842 6.92525 8.393 6.59692L10.122 3.13692ZM12.618 3.32392C12.5059 3.21199 12.3689 3.12828 12.2182 3.07967C12.0674 3.03107 11.9073 3.01896 11.751 3.04435C11.5947 3.06974 11.4466 3.13189 11.319 3.2257C11.1914 3.31951 11.0879 3.44229 11.017 3.58392L9.287 7.04292C9.01329 7.5904 8.54824 8.01844 7.98 8.24592L4.39 9.68192L10.317 15.6099L11.753 12.0199C11.9805 11.4511 12.409 10.9857 12.957 10.7119L16.415 8.98192C16.5565 8.91101 16.6791 8.80753 16.7727 8.68001C16.8664 8.55249 16.9285 8.40455 16.9539 8.24836C16.9793 8.09218 16.9672 7.9322 16.9187 7.78157C16.8703 7.63095 16.7867 7.49398 16.675 7.38192L12.618 3.32392Z" fill="#1A1A1A" fill-opacity="0.7"/>
+                        </svg>
+                        <p style="color: var(--text-secondary);">Save</p>
+                    </div>
+                    <div class="Interact_Button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                            <path d="M2.85056 2.11183C2.92521 2.05084 3.01589 2.01273 3.1117 2.00208C3.2075 1.99144 3.30434 2.00871 3.39056 2.05183L18.3906 9.55183C18.4738 9.5933 18.5438 9.65714 18.5927 9.73619C18.6416 9.81524 18.6675 9.90636 18.6675 9.99933C18.6675 10.0923 18.6416 10.1834 18.5927 10.2625C18.5438 10.3415 18.4738 10.4054 18.3906 10.4468L3.39056 17.9468C3.30443 17.99 3.20768 18.0073 3.11193 17.9968C3.01618 17.9862 2.92551 17.9482 2.85083 17.8874C2.77616 17.8266 2.72064 17.7454 2.69096 17.6538C2.66129 17.5622 2.65872 17.4639 2.68356 17.3708L4.64956 9.99983L2.68356 2.62883C2.6586 2.53573 2.66108 2.43739 2.69071 2.34567C2.72034 2.25394 2.77585 2.17274 2.85056 2.11183ZM5.55056 10.4998L3.93656 16.5558L17.0486 9.99983L3.93556 3.44383L5.55056 9.49983H12.1666C12.2992 9.49983 12.4263 9.55251 12.5201 9.64628C12.6139 9.74004 12.6666 9.86722 12.6666 9.99983C12.6666 10.1324 12.6139 10.2596 12.5201 10.3534C12.4263 10.4472 12.2992 10.4998 12.1666 10.4998H5.55056Z" fill="#1A1A1A" fill-opacity="0.7"/>
+                        </svg>
+                        <p style="color: var(--text-secondary);">Share</p>
+                    </div>
+                </div>
+                <div class="Comment_Field">
+                    <div class="comment_box">
+                        <div class="comment_write">
+                            <p style="color: var(--text-secondary);">Add a comment...</p>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" style="cursor: pointer;">
+                            <path d="M0 11C0 4.92487 4.92487 0 11 0C17.0751 0 22 4.92487 22 11C22 17.0751 17.0751 22 11 22C4.92487 22 0 17.0751 0 11Z" fill="#005EB8"/>
+                            <path d="M11 17.875V4.125M11 4.125L5.5 9.28125M11 4.125L16.5 9.28125" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
