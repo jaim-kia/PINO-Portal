@@ -125,13 +125,13 @@
 /* hover and active color */
 .nav_view_tab.hover-enabled:hover{
     /* background: #0171C6; */
-    background-color: var(--pino-blue);
+    background-color: var(--main-bg);
     background-image: linear-gradient(var(--tab-hover), var(--tab-hover));
     background-blend-mode: overlay;
 }
 
 .nav_view_tab.tab_active {
-    background-color: var(--pino-blue);
+    background-color: var(--main-bg);
     background-image: linear-gradient(var(--tab-active), var(--tab-active));
     background-blend-mode: overlay;
 }

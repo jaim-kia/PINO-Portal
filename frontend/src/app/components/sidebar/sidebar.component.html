@@ -6,7 +6,11 @@
       </div>
       <div class="profile_details">
         <div>Hi, User!</div>
-        <a class="link" style="opacity: 0.5;">Edit Profile</a>
+        <a class="link" style="opacity: 0.5;"  (click)="toggleSettings()">Edit Profile</a>
+          <app-profile-settings 
+            *ngIf="showSettings" 
+            (close)="toggleSettings()">
+          </app-profile-settings>
       </div>
     </div>
     <div class="nav_header_actions">

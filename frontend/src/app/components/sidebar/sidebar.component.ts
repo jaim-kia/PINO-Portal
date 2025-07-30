@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconsComponent} from '../icons/icons.component';
+import { ProfileSettingsComponent } from '../profile-settings/profile-settings.component';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
+import { ThemeService } from '../../services/theme.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, IconsComponent, RouterModule, ],
+  imports: [CommonModule, IconsComponent, RouterModule, ProfileSettingsComponent],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
   animations: [
@@ -23,7 +25,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
 
   isCollapsed = false;
 
@@ -38,7 +40,10 @@ export class SidebarComponent {
     {id: 'links', active: false, title: 'Client Links', category: 'workspace'},
   ];
 
-  constructor(private router: Router) {
+  // themes: any[] = [];
+  // currentTheme: string = '';
+
+  constructor(private router: Router, private themeService: ThemeService) {
     router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const currentUrl = this.router.url;
@@ -55,7 +60,11 @@ export class SidebarComponent {
     });
   }
 
-
+  ngOnInit() {
+    const currentTheme = this.themeService.getCurrentTheme();
+    this.themeService.applyTheme(currentTheme);
+  }
+  
 
   toggleIcon(target:string) {
     this.router.navigate(['/' + target]);
@@ -68,4 +77,12 @@ export class SidebarComponent {
   toggleSidebar() {
     this.isCollapsed = !this.isCollapsed;
   }
+
+  showSettings = false;
+
+  toggleSettings() {
+    this.showSettings = !this.showSettings;
+  }
+
+
 }

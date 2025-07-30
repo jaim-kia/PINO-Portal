@@ -1,0 +1,160 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    display: flex;
+    width: 1000px;
+    height: 700px;
+    padding: var(--spacing-xs);
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    border-radius: var(--modal-radius);
+    background: var(--pill-fill);
+    animation: slideUp 0.3s ease;
+    position: relative;
+    color: var(--text-default);
+}
+
+.Sidebar_Settings {
+    display: flex;
+    width: 300px;
+    padding: var(--spacing-l) 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-s);
+    flex-shrink: 0;
+    align-self: stretch;
+}
+
+.Sidebar_Settings .title {
+    display: flex;
+    padding: 0 var(--spacing-l);
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.Sidebar_Settings .tabs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.tabs .heading {
+    display: flex;
+    padding: var(--spacing-s) var(--spacing-l);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--spacing-s);
+    align-self: stretch;
+    cursor: pointer;
+}
+
+.MainView {
+    display: flex;
+    padding: 0 var(--spacing-xl);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-);
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: var(--radius-m);
+    background: var(--module-fill);
+}
+
+.Display {
+    display: flex;
+    padding: var(--spacing-xl) 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+}
+
+.Content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.Information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.MyAccount, .Appearance, .Notifications {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--spacing-m);
+    align-self: stretch;
+}
+
+.theme-options {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.radio-circle-label {
+    cursor: pointer;
+}
+
+/* to hide default radio button */
+.radio-circle-label input {
+    position: absolute;
+    opacity: 0;
+}
+
+.radio-circle {
+    display: inline-block;
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background-color: var(--circle-color);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.radio-circle-label:hover .radio-circle {
+    transform: scale(1.05);
+}
+
+.radio-circle-label.active .radio-circle,
+.radio-circle-label input:checked ~ .radio-circle {
+    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

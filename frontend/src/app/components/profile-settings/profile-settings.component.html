@@ -1,0 +1,81 @@
+<div class="modal-overlay" (click)="onClose()">
+    <div class="modal-content" (click)="$event.stopPropagation()">        
+
+        <div class="Sidebar_Settings">
+            <div class="title">
+                <div class="tab">settings</div>
+            </div>
+            <div class="tabs">
+                <div class="heading"><p>My Account</p></div>
+                <div class="heading"><p>Appearance</p></div>
+                <div class="heading"><p>Notifications</p></div>
+            </div>
+        </div>
+        <div class="MainView">
+            <div class="Display">
+                <div class="MyAccount">
+                    <h4>My Account</h4>
+                    <div class="Content">
+                        <div class="Information">
+                            <p>Password</p>
+                            <small>Change the password to your account.</small>
+                        </div>
+                        <div class="Action">
+
+                        </div>
+                    </div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="2" viewBox="0 0 32 2" fill="none">
+                    <path d="M1 1H31" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div class="Appearance">
+                    <h4>Appearance</h4>
+                    <div class="Content">
+                        <div class="Information">
+                            <p>Color mode</p>
+                            <small>Choose if PINO Portal's appearance should be light or dark, or follow your computer's settings.</small>
+                        </div>
+                        <div class="Action">
+                            
+                        </div>
+                    </div>
+                    <div class="Content">
+                        <div class="Information">
+                            <p>Theme</p>
+                            <small>Customize the main colors of PINO Portal.</small>
+                        </div>
+                        <div class="Action">
+                                <div class="theme-options">
+                                    <label *ngFor="let theme of themes" 
+                                        [class.active]="theme === currentTheme"
+                                        (click)="changeTheme(theme)"
+                                        [style.--circle-color]="'var(--' + theme + ')'"
+                                        [style.--outline-color]="'var(--' + theme + '-darker)'"
+                                        class="radio-circle-label">
+                                        <input type="radio" name="theme-option" [checked]="theme === currentTheme">
+                                        <span class="radio-circle"></span>
+                                    </label>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="2" viewBox="0 0 32 2" fill="none">
+                    <path d="M1 1H31" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div class="Notifications">
+                    <h4>Notifications</h4>
+                    <div class="Content">
+                        <div class="Information">
+                            <p>Email notifications</p>
+                            <small>Lorem Ipsum...</small>
+                        </div>
+                        <div class="Action">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
