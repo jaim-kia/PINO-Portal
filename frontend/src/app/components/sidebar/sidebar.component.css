@@ -124,7 +124,6 @@
 
 /* hover and active color */
 .nav_view_tab.hover-enabled:hover{
-    /* background: #0171C6; */
     background-color: var(--main-bg);
     background-image: linear-gradient(var(--tab-hover), var(--tab-hover));
     background-blend-mode: overlay;
@@ -148,11 +147,20 @@
 }
 
 .nav_help_collapsed {
+    padding: var(--spacing-xs);
+    padding-bottom: 0px;
+    border-radius: var(--radius-s);
     margin-top: auto;
     margin-right: auto;
-    margin-left: 8px;
     cursor: pointer;
 }
+
+.nav_help_collapsed:hover {
+    background-color: var(--main-bg);
+    background-image: linear-gradient(var(--tab-hover), var(--tab-hover));
+    background-blend-mode: overlay;
+}
+
 /* ------------------------- */
 
 /* Animation */
@@ -162,16 +170,5 @@
     }
     100% {
         margin-top: 134.4px; 
-    }
-}
-
-@keyframes dissapear {
-    0%   {
-        opacity: 100%;
-        display: flex;
-    }
-    100% {
-        opacity: 0%;
-        display: none;
     }
 }

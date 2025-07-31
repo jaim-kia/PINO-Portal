@@ -143,6 +143,7 @@ a {
     font-size: 10px;
     line-height: 120%;
     text-transform: uppercase;
+    color: var(--main-text) !important;
 }
 .link {
     display: block;

@@ -68,11 +68,19 @@
     padding: 0 var(--spacing-xl);
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--spacing-);
+    text-wrap: auto;
+    gap: var(--spacing-l);
     flex: 1 0 0;
     align-self: stretch;
     border-radius: var(--radius-m);
     background: var(--module-fill);
+    overflow: auto;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+}
+
+.MainView::-webkit-scrollbar {
+    display: none;
 }
 
 .Display {
@@ -84,17 +92,62 @@
     align-self: stretch;
 }
 
+.password {
+    display: flex;
+    padding: var(--spacing-xs) var(--spacing-m);
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-xs);
+    border-radius: var(--field-radius);
+    background: var(--pill-fill);    
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+}
+
+.Action {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.password:hover {
+    color: var(--pino-white);
+    background-color: var(--pino-black);
+}
+
 .Content {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     align-self: stretch;
+    gap: var(--spacing-l);
 }
 
 .Information {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    color: var(--text-default);
+}
+
+.Information small {
+    color: var(--text-secondary);
+}
+
+.notif-preferences {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-m);
+    align-self: stretch;
+}
+
+.notif-subheading {
+    font-family: 'Satoshi-Regular';
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 120%;
 }
 
 .MyAccount, .Appearance, .Notifications {
@@ -113,12 +166,12 @@
     gap: 8px;
 }
 
-.radio-circle-label {
+.radio-circle-label, .color-mode-label {
     cursor: pointer;
 }
 
 /* to hide default radio button */
-.radio-circle-label input {
+.radio-circle-label input, .color-mode-label input {
     position: absolute;
     opacity: 0;
 }
@@ -133,6 +186,27 @@
     box-sizing: border-box;
 }
 
+.radio-color {
+    display: flex;
+    padding: var(--spacing-s) var(--spacing-m);
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-s);
+    transition: all 0.3s ease;
+    color: var(--text-secondary);
+}
+
+.color-mode-label input:checked ~ .radio-color {
+    color: var(--text-default);
+    border-radius: 12px;
+    background: var(--module-fill);
+    box-shadow: 1px 1px 8px 0 rgba(26, 26, 26, 0.16);
+}
+
+.color-mode-label:hover {
+    transform: scale(1.05);
+}
+
 .radio-circle-label:hover .radio-circle {
     transform: scale(1.05);
 }
@@ -140,6 +214,140 @@
 .radio-circle-label.active .radio-circle,
 .radio-circle-label input:checked ~ .radio-circle {
     box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 38px;
+    height: 18px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--pino-white);
+    border: 2px solid var(--pino-black);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 10px;
+    left: 2px;
+    bottom: 2px;
+    background-color: var(--pino-black);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--pino-black);
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+    background-color: var(--pino-white);
+
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.color-mode {
+    display: flex;
+    padding: var(--spacing-xs);
+    align-items: center;
+    border-radius: var(--field-radius);
+    background: var(--pill-fill);
+}
+
+.notif-frequency-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.notif-frequency-label input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    margin: 2px;
+}
+
+.notif-frequency-label input[type="radio"]:checked {
+    accent-color: var(--pino-black);
+}
+
+.notif-frequency-label input[type="text"] {
+    display: flex;
+    padding: 0 12px;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    border: none;
+    border-radius: var(--spacing-xs);
+    background: var(--pill-fill);
+    aspect-ratio: 2/1;
+    width: 20px;
+    font-family: 'Satoshi-Medium';
+    font-size: 16px;
+    line-height: 140%;
+}
+
+.Dropdown {
+    display: flex;
+    width: 212px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.custom-select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 0px;
+    border-radius: var(--radius-m);
+    background-color: var(--pill-fill);
+    font-size: 16px;
+    font-family: 'Satoshi-Medium';
+    color: var(--text-default);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2211%22%20height%3D%2212%22%20viewBox%3D%220%200%2011%2012%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M1.5%205.25L5.5%208.75L9.5%205.25%22%20stroke%3D%22%231A1A1A%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+}
+
+.custom-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.custom-select option {
+    padding: 8px;
 }
 
 /* Animations */

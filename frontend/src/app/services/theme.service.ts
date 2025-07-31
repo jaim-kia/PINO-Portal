@@ -52,7 +52,17 @@ export class ThemeService {
     if (this.isBrowser) {
       document.documentElement.style.setProperty('--main-bg', `var(--${theme})`);
       localStorage.setItem(this.THEME_KEY, theme);
-    }
+      
+      if (themeName == "pino-pink" || themeName == "pino-yellow") {
+        document.documentElement.style.setProperty('--main-text', `var(--pino-black)`);
+        localStorage.setItem('--main-text', `var(--pino-black)`);
+      }
+      else {
+        document.documentElement.style.setProperty('--main-text', `var(--pino-white)`);
+        localStorage.setItem('--main-text', `var(--pino-white)`);
+      }
+        }
+
   }
 
 

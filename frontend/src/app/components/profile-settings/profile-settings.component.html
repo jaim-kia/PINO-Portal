@@ -3,7 +3,7 @@
 
         <div class="Sidebar_Settings">
             <div class="title">
-                <div class="tab">settings</div>
+                <div class="tab" style="color: var(--pino-black) !important;">settings</div>
             </div>
             <div class="tabs">
                 <div class="heading"><p>My Account</p></div>
@@ -21,7 +21,9 @@
                             <small>Change the password to your account.</small>
                         </div>
                         <div class="Action">
-
+                            <div class="password">
+                                <p>Change password</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -35,8 +37,21 @@
                             <p>Color mode</p>
                             <small>Choose if PINO Portal's appearance should be light or dark, or follow your computer's settings.</small>
                         </div>
-                        <div class="Action">
-                            
+                        <div class="Action" style="width: 235px;">
+                            <div class="color-mode">
+                                <label class="color-mode-label">
+                                    <input type="radio" name="color-option" value="mode-light" checked>
+                                    <p class="radio-color">Light</p>
+                                </label>
+                                <label class="color-mode-label">
+                                    <input type="radio" name="color-option" value="mode-dark">
+                                    <p class="radio-color">Dark</p>
+                                </label>
+                                <label class="color-mode-label">
+                                    <input type="radio" name="color-option" value="mode-system">
+                                    <p class="radio-color">System</p>
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="Content">
@@ -70,7 +85,107 @@
                             <small>Lorem Ipsum...</small>
                         </div>
                         <div class="Action">
-                            
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px; align-self: stretch;">
+                        <p class="notif-subheading">Notify me about...</p>
+                        <div class="notif-preferences">
+                            <div class="Content">
+                                <div class="Information">
+                                    <p>Announcements</p>
+                                    <small>Permanently receive notifications about announcements on the Portal.</small>
+                                </div>
+                                <div class="Action">
+                                    <label class="switch">
+                                        <input type="checkbox" checked disabled>
+                                        <span class="slider round" style="background-color: var(--text-secondary); border: 2px solid var(--text-secondary) !important; "></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="Content">
+                                <div class="Information">
+                                    <p>Form approvals</p>
+                                    <small>Receive notifications about when your request form statuses.</small>
+                                </div>
+                                <div class="Action">
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="Content">
+                                <div class="Information">
+                                    <p>Wins</p>
+                                    <small>Receive notifications about other people's wins.</small>
+                                </div>
+                                <div class="Action">
+                                    <!-- Dropdown innacurate from figma file, perhaps there could be a different method from the <select> tag  -->
+                                    <div class="Dropdown">
+                                        <select name="dropdown-wins" id="dropdown-wins" class="custom-select">
+                                            <option value="wins-all">All</option>
+                                            <option value="wins-star">Starred contacts only</option>
+                                            <option value="wins-none">None</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Content">
+                                <div class="Information">
+                                    <p>Birthdays</p>
+                                    <small>Receive notifications about other people's birthdays.</small>
+                                </div>
+                                <div class="Action">
+                                    <div class="Dropdown">
+                                        <select name="dropdown-bday" id="dropdown-bday" class="custom-select">
+                                            <option value="bday-all">All</option>
+                                            <option value="bday-star">Starred contacts only</option>
+                                            <option value="bday-none">None</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Content">
+                                <div class="Information">
+                                    <p>Post reactions</p>
+                                    <small>Receive notifications about likes and comments to your posts.</small>
+                                </div>
+                                <div class="Action">
+                                    <div class="Dropdown">
+                                        <select name="dropdown-react" id="dropdown-react" class="custom-select">
+                                            <option value="react-all">All</option>
+                                            <option value="react-star">Starred contacts only</option>
+                                            <option value="react-none">None</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; gap: var(--spacing-xs); align-self: stretch;">
+                        <p class="notif-subheading">Notify me...</p>
+                        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: var(--spacing-xs); align-self: stretch;">
+                            <label class="notif-frequency-label">
+                                <input type="radio" name="notif-frequency" value="f-always" checked>
+                                <p class="radio-notif">Always, even when I'm active</p>
+                            </label>
+                            <label class="notif-frequency-label">
+                                <input type="radio" name="notif-frequency" value="f-inactive">
+                                <p class="radio-notif">As soon as I'm inactive</p>
+                            </label>
+                            <label class="notif-frequency-label">
+                                <input type="radio" name="notif-frequency" value="f-custom">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-s, 12px); align-self: stretch;">
+                                    <p class="radio-notif">After</p>
+                                    <input type="text" id="f-minutes" name="f-custom-minutes" class="text-field">
+                                    <p class="radio-notif">minutes</p>
+                                </div>
+                                
+                            </label>
                         </div>
                     </div>
                 </div>
