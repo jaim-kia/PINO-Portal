@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconsComponent} from '../icons/icons.component';
 import { ProfileSettingsComponent } from '../profile-settings/profile-settings.component';
+import { NotificationsComponent } from '../notifications/notifications.component';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -9,7 +10,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, IconsComponent, RouterModule, ProfileSettingsComponent],
+  imports: [CommonModule, IconsComponent, RouterModule, ProfileSettingsComponent, NotificationsComponent],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
   animations: [
@@ -39,9 +40,6 @@ export class SidebarComponent implements OnInit {
     {id: 'notes', active: false, title: 'Personal Notes', category: 'workspace'},
     {id: 'links', active: false, title: 'Client Links', category: 'workspace'},
   ];
-
-  // themes: any[] = [];
-  // currentTheme: string = '';
 
   constructor(private router: Router, private themeService: ThemeService) {
     router.events.subscribe((event) => {
@@ -84,5 +82,35 @@ export class SidebarComponent implements OnInit {
     this.showSettings = !this.showSettings;
   }
 
+  showNotifs = false;
+  @ViewChild('notificationsTrigger') notificationsTrigger!: ElementRef;
+  notificationPosition = { top: '0', left: '0' };
+
+  toggleNotifs() {
+    this.showNotifs = !this.showNotifs;
+    
+    if (this.showNotifs) {
+      this.calculatePosition();
+    }
+  }
+
+  calculatePosition() {
+    const triggerEl = this.notificationsTrigger.nativeElement;
+    const rect = triggerEl.getBoundingClientRect();
+    if (!this.isCollapsed) {
+      this.notificationPosition = {
+        top: `${rect.bottom*1.3}px`,
+        left: `${rect.left/3}px`
+      };
+    } else {
+      this.notificationPosition = {
+        top: `${rect.top/2}px`,
+        left: `${rect.left*4}px`
+      }
+    }
+  }
+  onNotificationsClosed() {
+    this.showNotifs = false;
+  }
 
 }

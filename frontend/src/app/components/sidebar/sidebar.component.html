@@ -1,4 +1,10 @@
 <div class="navbar" [class.collapsed]="isCollapsed">
+  <app-notifications 
+    *ngIf="showNotifs" 
+    [position]="notificationPosition"
+    (close)="toggleNotifs()"
+    style="position: absolute;">
+  </app-notifications>
   <div class="nav_header" @fadeInOut *ngIf="!isCollapsed; else nav_header_collapsed">
     <div class="nav_header_profile">
       <div class="profile_display">
@@ -8,22 +14,23 @@
         <div>Hi, User!</div>
         <a class="link" style="opacity: 0.5;"  (click)="toggleSettings()">Edit Profile</a>
           <app-profile-settings 
-            *ngIf="showSettings" 
+            *ngIf="showSettings"
             (close)="toggleSettings()">
           </app-profile-settings>
       </div>
     </div>
     <div class="nav_header_actions">
-        <app-icons svgType="icon-notif" class="nav_icon"></app-icons>
+        <div #notificationsTrigger><app-icons svgType="icon-notif" class="nav_icon" (click)="toggleNotifs()"></app-icons></div>
         <app-icons svgType="icon-close" class="nav_icon" (click)="toggleSidebar()"></app-icons>
     </div>
   </div>
   <ng-template #nav_header_collapsed>
     <div class="nav_header_collapsed" @fadeInOut >
       <app-icons svgType="icon-menu" class="nav_icon" (click)="toggleSidebar()"></app-icons>
-      <app-icons svgType="icon-notif" class="nav_icon"></app-icons>
+      <div #notificationsTrigger><app-icons svgType="icon-notif" class="nav_icon" (click)="toggleNotifs()"></app-icons></div>
     </div>
   </ng-template>
+
 
   <ng-template #divider>
     <div class="divider" @fadeInOut>
