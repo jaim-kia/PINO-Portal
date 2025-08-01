@@ -67,13 +67,13 @@
   <div class="nav_help" style="display: flex;">
     <!-- collapsed -->
     <div class="nav_help_collapsed" *ngIf="isCollapsed" @fadeInOut>
-      <app-icons svgType="icon-help"></app-icons>
+      <app-icons svgType="icon-help" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=samuel.noel@pino.ph&su=[PINO%20Portal%20Help%20Desk]%20(Insert%20Subject%20Here)&body=', '_blank');"></app-icons>
     </div>
     <!-- expanded -->
     <div *ngIf="!isCollapsed" @fadeInOut style="margin-left: auto; margin-right: 20px;">
       <div style="white-space: pre; overflow: hidden; text-overflow: ellipsis;">
         Having trouble with the website?<br>
-        <a class="link">Contact the team here.</a>
+        <a class="link" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=samuel.noel@pino.ph&su=[PINO%20Portal%20Help%20Desk]%20(Insert%20Subject%20Here)&body=', '_blank');">Contact the team here.</a>
       </div>
     </div>
   </div>
