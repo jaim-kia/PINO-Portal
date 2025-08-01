@@ -156,9 +156,8 @@
 }
 
 .nav_help_collapsed:hover {
-    background-color: var(--main-bg);
-    background-image: linear-gradient(var(--tab-hover), var(--tab-hover));
-    background-blend-mode: overlay;
+    transform: scale(1.10);
+    transition: all 0.5s ease;
 }
 
 /* ------------------------- */
